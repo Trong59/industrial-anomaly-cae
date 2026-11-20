@@ -1,0 +1,36 @@
+# Configuration for MVTec AD Bottle Anomaly Detection (Baseline E1)
+experiment_id: E1_bottle_mse_seed42
+category: bottle
+seed: 42
+
+data:
+  image_size: [256, 256]
+  channels: 3
+  val_ratio: 0.2
+  batch_size: 16
+  num_workers: 2
+
+model:
+  name: cae
+  in_channels: 3
+  base_channels: 32          # Channels per block: 32 -> 64 -> 128 -> 256
+  bottleneck_channels: null  # Optional 1x1 conv compression; null keeps baseline 256
+  output_activation: sigmoid
+
+training:
+  loss: mse                  # 'mse' or 'l1'
+  optimizer: adam
+  lr: 0.001
+  weight_decay: 0.0
+  epochs: 100
+  early_stopping_patience: 10
+
+calibration:
+  rule: percentile           # 'percentile' or 'mean_k_std'
+  image_percentile: 99.0
+  image_k_std: 3.0
+  pixel_percentile: 99.5
+
+inference:
+  error_metric: l1           # 'l1' or 'mse' (pixel error map across RGB)
+  top_percent: 0.01          # Top 1% highest pixel errors used for image anomaly score

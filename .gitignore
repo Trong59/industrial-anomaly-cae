@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE & Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# Data & Datasets (Strictly prohibited on GitHub)
+data/
+datasets/
+mvtec_anomaly_detection/
+*.tar
+*.tar.gz
+*.tar.xz
+*.zip
+
+# Model Checkpoints & Weights
+*.pth
+*.pt
+*.ckpt
+*.onnx
+checkpoints/
+
+# Experiment Outputs & Logs
+outputs/
+runs/
+experiments/
+logs/
+*.log
+
+# OS generated
+.DS_Store
+Thumbs.db
