@@ -1,0 +1,41 @@
+# Configuration for MVTec AD Bottle Anomaly Detection (Experiment E2)
+# Hypothesis:
+#   1. L1 loss preserves sharper defect gradients than MSE loss.
+#   2. Bottleneck compression (bottleneck_channels=64) prevents identity mapping of fine defects.
+#   3. Percentile 95% threshold balances false negatives without significantly degrading specificity.
+
+experiment_id: E2_bottle_l1_bottleneck_seed42
+category: bottle
+seed: 42
+
+data:
+  image_size: [256, 256]
+  channels: 3
+  val_ratio: 0.2
+  batch_size: 16
+  num_workers: 2
+
+model:
+  name: cae
+  in_channels: 3
+  base_channels: 32          # 32 -> 64 -> 128 -> 256
+  bottleneck_channels: 64    # Compress latent space: 256 -> 64 (4x compression factor)
+  output_activation: sigmoid
+
+training:
+  loss: l1                   # L1 loss for sharper anomaly boundaries
+  optimizer: adam
+  lr: 0.001
+  weight_decay: 0.0
+  epochs: 100
+  early_stopping_patience: 10
+
+calibration:
+  rule: percentile
+  image_percentile: 95.0     # 95th percentile to capture subtle scratches and contaminations
+  image_k_std: 2.0
+  pixel_percentile: 99.0
+
+inference:
+  error_metric: l1           # L1 error map
+  top_percent: 0.01          # Top 1% highest pixel errors used for image anomaly score
