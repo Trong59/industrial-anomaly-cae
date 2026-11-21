@@ -1,7 +1,7 @@
 # Configuration for MVTec AD Metal Nut Anomaly Detection
 # Architecture: CAE with L1 Loss and Bottleneck compression (64 channels)
 
-experiment_id: E1_metal_nut_l1_bottleneck_seed42
+experiment_id: E2_metal_nut_l1_bottleneck_seed42
 category: metal_nut
 seed: 42
 

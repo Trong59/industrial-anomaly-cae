@@ -1,7 +1,7 @@
 # Configuration for MVTec AD Capsule Anomaly Detection
 # Architecture: CAE with L1 Loss and Bottleneck compression (64 channels)
 
-experiment_id: E1_capsule_l1_bottleneck_seed42
+experiment_id: E2_capsule_l1_bottleneck_seed42
 category: capsule
 seed: 42
 
