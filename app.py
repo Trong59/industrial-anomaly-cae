@@ -3,7 +3,6 @@ import time
 from pathlib import Path
 from typing import Dict, Optional, Tuple
 
-import cv2
 import matplotlib.cm as cm
 import numpy as np
 import streamlit as st
