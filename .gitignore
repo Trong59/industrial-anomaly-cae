@@ -38,6 +38,7 @@ venv.bak/
 *.ckpt
 *.onnx
 /checkpoints/
+/models_saved/
 
 # Experiment Outputs & Logs
 /outputs/
